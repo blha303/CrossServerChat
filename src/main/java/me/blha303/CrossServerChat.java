@@ -37,7 +37,7 @@ public class CrossServerChat extends Plugin implements Listener {
 		if (e.getSender() instanceof ProxiedPlayer) {
 			ProxiedPlayer pl = (ProxiedPlayer) e.getSender();
 			for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-				if (p.getServer() != pl.getServer()) {
+				if (p.getServer().getInfo().getName() != pl.getServer().getInfo().getName()) {
 					p.sendMessage(String.format(msg, pl.getServer().getInfo().getName(), pl.getDisplayName(), m));
 				}
 			}

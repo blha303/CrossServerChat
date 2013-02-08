@@ -30,7 +30,7 @@ public class CrossServerChat extends Plugin implements Listener {
 	@Subscribe
 	public void onChat(ChatEvent e) {
 		String m = e.getMessage();
-		String msg = ChatColor.translateAlternateColorCodes('&', "&7<&2%s&8-&2%s&7> &f%s");
+		String msg = ChatColor.translateAlternateColorCodes('&', config.getString("string"));
 		if (e.getSender() instanceof ProxiedPlayer) {
 			ProxiedPlayer pl = (ProxiedPlayer) e.getSender();
 			for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {

@@ -1,4 +1,4 @@
-name: CrossServerChat
-main: me.blha303.CrossServerChat
-version: 2
-author: blha303
+name: ${project.name}
+main: ${project.groupId}.${project.artifactId}
+version: ${project.version}
+author: ${properties.author}

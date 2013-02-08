@@ -18,10 +18,13 @@ public class CrossServerChat extends Plugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		String defaultmsg = "&7<&2%s&8-&2%s&7> &f%s";
 		ProxyServer.getInstance().getPluginManager().registerListener(this);
 		try {
-			config = new BungeeConfig(this, "");
-			config.set("string", "&7<&2%s&8-&2%s&7> &f%s");
+			config = new BungeeConfig(this, "%s is replaced with (in order) server name, player display name, message. Make sure you have three %s's.");
+			if (config.isNew()) {
+				config.set("string", defaultmsg);
+			}
 		} catch (IOException e) {
 			System.out.println("Could not create CrossServerChat config. Maybe you're out of disk space.");
 		}

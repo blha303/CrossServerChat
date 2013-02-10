@@ -28,21 +28,15 @@ public class CrossServerChat extends Plugin implements Listener {
 	@Override
 	public void onEnable() {
 		String defaultmsg = "&7<&2%s&8-&2%s&7> &f%s";
-		file = new File("plugins" + File.pathSeparator
-				+ this.getDescription().getName() + File.pathSeparator
-				+ "locations.yml");
+		file = new File("plugins" + File.pathSeparator + this.getDescription().getName() + File.pathSeparator + "config.yml");
 		yaml = new Yaml();
 		loadYAML();
-		if (Integer.parseInt(data.get("version")) < Integer.parseInt(this
-				.getDescription().getVersion())) {
+		if (Integer.parseInt(data.get("version")) < Integer.parseInt(this.getDescription().getVersion())) {
 			String a = get("string");
-			if (get("string") == defaultmsg)
-				data.clear();
+			if (get("string") == defaultmsg) data.clear();
 			put("version", this.getDescription().getVersion());
-			put("help",
-					"%s is replaced with (in order) server name, player display name, message. Make sure you have all three.");
-			if (a != defaultmsg)
-				put("string", a);
+			put("help", "%s is replaced with (in order) server name, player display name, message. Make sure you have all three.");
+			if (a != defaultmsg) put("string", a);
 			put("server.lobby", "Lobby");
 		}
 		ProxyServer.getInstance().getPluginManager().registerListener(this);
@@ -52,24 +46,18 @@ public class CrossServerChat extends Plugin implements Listener {
 	public void onChat(ChatEvent e) {
 		String m = e.getMessage();
 		String servername = "";
-		String msg = ChatColor.translateAlternateColorCodes('&',
-				data.get("string"));
+		String msg = ChatColor.translateAlternateColorCodes('&', data.get("string"));
 		if (e.getSender() instanceof ProxiedPlayer) {
 			ProxiedPlayer pl = (ProxiedPlayer) e.getSender();
-			if (containsKey("server."
-					+ pl.getServer().getInfo().getName().toLowerCase())) {
-				servername = ChatColor.translateAlternateColorCodes('&',
-						get("server."
-								+ pl.getServer().getInfo().getName()
-										.toLowerCase()));
+			if (containsKey("server." + pl.getServer().getInfo().getName().toLowerCase())) {
+				servername = ChatColor.translateAlternateColorCodes('&', 
+					get("server." + pl.getServer().getInfo().getName().toLowerCase()));
 			} else {
 				servername = pl.getServer().getInfo().getName().toLowerCase();
 			}
 			for (ProxiedPlayer p : ProxyServer.getInstance().getPlayers()) {
-				if (p.getServer().getInfo().getName() != pl.getServer()
-						.getInfo().getName()) {
-					p.sendMessage(String.format(msg, servername,
-							pl.getDisplayName(), m));
+				if (p.getServer().getInfo().getName() != pl.getServer().getInfo().getName()) {
+					p.sendMessage(String.format(msg, servername, pl.getDisplayName(), m));
 				}
 			}
 		}
@@ -80,20 +68,20 @@ public class CrossServerChat extends Plugin implements Listener {
 	 */
 	@SuppressWarnings("unchecked")
 	public void loadYAML() {
-        try {
-            file.createNewFile();
-            try {
-            	FileReader rd = new FileReader(file);
-                data = yaml.loadAs(rd, Map.class);
-            } catch (IOException ex) {
-            ProxyServer.getInstance().getLogger().log(Level.WARNING, "Could not load CrossServerChat config", ex);
-            }
+		try {
+			file.createNewFile();
+			try {
+				FileReader rd = new FileReader(file);
+				data = yaml.loadAs(rd, Map.class);
+			} catch (IOException ex) {
+			ProxyServer.getInstance().getLogger().log(Level.WARNING, "Could not load CrossServerChat config", ex);
+			}
 
-        if (data == null) {
-            data = new ConcurrentHashMap<>();
-        } else {
-            data = new ConcurrentHashMap<>(data);
-        }
+		if (data == null) {
+			data = new ConcurrentHashMap<>();
+		} else {
+			data = new ConcurrentHashMap<>(data);
+		}
 	}
 
 	/**

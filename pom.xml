@@ -2,11 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.blha303</groupId>
   <artifactId>CrossServerChat</artifactId>
-  <version>3</version>
+  <version>4</version>
   <name>CrossServerChat</name>
-  <properties>
-  <author>blha303</author>
-  </properties>
   <repositories>
     <repository>
       <id>local</id>
@@ -48,13 +45,6 @@
       <groupId>net.md_5.bungee</groupId>
       <artifactId>BungeeCord</artifactId>
       <version>b162</version>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.dwarfscraft.config</groupId>
-      <artifactId>BungeeConfig</artifactId>
-      <version>2</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>

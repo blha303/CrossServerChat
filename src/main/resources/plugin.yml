@@ -1,4 +1,4 @@
 name: ${project.name}
 main: ${project.groupId}.${project.artifactId}
 version: ${project.version}
-author: ${properties.author}
+author: blha303

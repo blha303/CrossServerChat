@@ -68,14 +68,18 @@ public class CrossServerChat extends Plugin implements Listener {
 	 */
 	@SuppressWarnings("unchecked")
 	public void loadYAML() {
+		
 		try {
 			file.createNewFile();
-			try {
-				FileReader rd = new FileReader(file);
-				data = yaml.loadAs(rd, Map.class);
-			} catch (IOException ex) {
+		} catch (IOException e) {
+			ProxyServer.getInstance().getLogger().log(Level.WARNING, "Could not create config file", e);
+		}
+		try {
+			FileReader rd = new FileReader(file);
+			data = yaml.loadAs(rd, Map.class);
+		} catch (IOException ex) {
 			ProxyServer.getInstance().getLogger().log(Level.WARNING, "Could not load CrossServerChat config", ex);
-			}
+		}
 
 		if (data == null) {
 			data = new ConcurrentHashMap<>();

@@ -82,9 +82,9 @@ public class CrossServerChat extends Plugin implements Listener {
 		}
 
 		if (data == null) {
-			data = new ConcurrentHashMap<>();
+			data = new ConcurrentHashMap<String, String>();
 		} else {
-			data = new ConcurrentHashMap<>(data);
+			data = new ConcurrentHashMap<String, String>(data);
 		}
 	}
 

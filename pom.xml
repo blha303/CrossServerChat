@@ -6,8 +6,8 @@
   <name>CrossServerChat</name>
   <repositories>
     <repository>
-      <id>local</id>
-      <url>file:${basedir}/lib</url>
+      <id>sonatype-oss-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
   <build>
@@ -42,9 +42,9 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>net.md_5.bungee</groupId>
-      <artifactId>BungeeCord</artifactId>
-      <version>b162</version>
+      <groupId>net.md-5</groupId>
+      <artifactId>bungeecord-proxy</artifactId>
+      <version>1.4.7-20130218.082557-31</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
